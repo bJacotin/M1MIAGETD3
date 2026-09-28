@@ -43,4 +43,17 @@ public class Catalog{
         return result;
     }
 
+    public boolean isProductExist(UUID uuid){
+        return this.quantityProduct.containsKey(uuid);
+    }
+
+    public int productInStock(UUID uuid){
+        return this.quantityProduct.get(uuid);
+    }
+
+    public void removeQuantityByUUID(UUID uuid, int quantity){
+        int newQuantity = this.productInStock(uuid)-quantity;
+        quantityProduct.put(uuid, newQuantity);
+    }
+
 }
