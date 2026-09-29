@@ -39,4 +39,15 @@ public class Basket {
             }
         }   
     }
+    
+    @Override
+    public String toString(){
+        String result = "Basket :\n";
+        for (UUID id : orderedQuantity.keySet()){
+            Product p = this.catalogue.showProduct(id);
+            int quantity = orderedQuantity.get(id);
+            result = result + "Produit : " + p.getProductName() + " - " + "Prix : " + p.getProductPrice() + " (Quantité : " + quantity + ")" + "\n";
+        }
+        return result;
+    }
 }

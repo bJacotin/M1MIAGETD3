@@ -14,13 +14,10 @@ public class Catalog{
 
     public Catalog(){
         this.products = new HashSet<>();
-        //products.add(product);
 
         this.uuidProduct = new HashMap<>();
-        //uuidProduct.put(product.getProductUuid(), product);
 
         this.quantityProduct = new HashMap<>();
-        //quantityProduct.put(product.getProductUuid(), quantity);
     }
 
     public void addProduct(Product product, int quantity) throws Exception{
@@ -55,5 +52,22 @@ public class Catalog{
         int newQuantity = this.productInStock(uuid)-quantity;
         quantityProduct.put(uuid, newQuantity);
     }
+
+    public Product showProduct(UUID id){
+        return this.uuidProduct.get(id);
+    }
+    
+    public void modifyPrice(Product oldProduct, String newProductName ,double NewProductPrice, int newQuantity) throws Exception{
+        products.remove(oldProduct);
+        quantityProduct.remove(oldProduct.getProductUuid());
+        uuidProduct.remove(oldProduct.getProductUuid());
+
+        Product productWithNewPrice = new Product(newProductName, NewProductPrice);
+        addProduct(productWithNewPrice, newQuantity);
+        //Il y a un problème puisque pour les paniers, le produit modifié n'existe plus. Ils ont gardé en référence l'UUID de l'ancien produit, pas du nouveau et l'ancien produit n'est plus référencé puisqu'il est supprimé des trois collections.
+
+        //Pour régler le problème il faut attribuer l'UUID de l'ancien produit au nouveau.
+    }
+
 
 }

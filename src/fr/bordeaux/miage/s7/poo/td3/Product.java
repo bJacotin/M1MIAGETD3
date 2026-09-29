@@ -4,14 +4,14 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Product {
-    private String nom;
-    private double prix;
+    private String name;
+    private double price;
     private UUID uuid;
 
-    public Product(String nom, double prix){
+    public Product(String name, double price){
         this.uuid = UUID.randomUUID();
-        this.nom = nom;
-        this.prix = prix;
+        this.name = name;
+        this.price = price;
     }
 
     public boolean isProductEquals(Product otherProduct){
@@ -37,10 +37,10 @@ public class Product {
     }
 
     public String getProductName(){
-        return nom;
+        return name;
     }
     
     public double getProductPrice(){
-        return prix;
+        return price;
     }
 }
