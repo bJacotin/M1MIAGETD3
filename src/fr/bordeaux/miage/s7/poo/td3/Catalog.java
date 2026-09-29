@@ -62,7 +62,7 @@ public class Catalog{
         quantityProduct.remove(oldProduct.getProductUuid());
         uuidProduct.remove(oldProduct.getProductUuid());
 
-        Product productWithNewPrice = new Product(newProductName, NewProductPrice);
+        Product productWithNewPrice = new Product(oldProduct.getProductUuid(), newProductName, NewProductPrice);
         addProduct(productWithNewPrice, newQuantity);
         //Il y a un problème puisque pour les paniers, le produit modifié n'existe plus. Ils ont gardé en référence l'UUID de l'ancien produit, pas du nouveau et l'ancien produit n'est plus référencé puisqu'il est supprimé des trois collections.
 

@@ -14,6 +14,12 @@ public class Product {
         this.price = price;
     }
 
+    public Product(UUID uuid, String name, double price){
+        this.uuid = uuid;
+        this.name = name;
+        this.price = price;
+    }
+
     public boolean isProductEquals(Product otherProduct){
         return otherProduct.getProductName().equals(this.getProductName()) && otherProduct.getProductPrice() == this.getProductPrice();
     }
